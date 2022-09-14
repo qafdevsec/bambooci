@@ -1,0 +1,16 @@
+--
+version: 2
+plan:
+    project-key: MYAPP
+    name: Build the myapp
+    key: MYAPP
+ stages:
+  -scan the myapp stage:
+       jobs:
+          -- Scan
+Scan:
+   tasks:
+       - clean        # To keep the working directory clean
+     -script:
+      #- docker pull registry.fortidevsec.forticloud.com/fdevsec_sast:latest
+      - docker run --rm --mount type=bind,source=$PWD,target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest env
